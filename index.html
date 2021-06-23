@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/0224eaa365.js" crossorigin="anonymous"></script>
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/modal.css">
+    <link rel="stylesheet" href="public/css/table.css">
+</head>
+<body>
+    <!-- <button  class="hide hideShowModal"></button> -->
+
+    <div class="todo">
+        <div class="header">
+            
+            <div class="headerNav">
+                <div class="headerTitle">
+                    <div class="headerTitleBackground">
+                        <h1>ToDo list</h1>
+                    </div>
+                </div>
+                <div class="headerButtonContainer">
+                    <button id="modalOpenAddTask" type="button" class="button headerModalOpenAddTask" 
+                    data-modal-add-task="#modalFormAddTask"
+                    data-modal-show-task="#modalFormShowTask"
+                    data-modal-edit-task="#modalFormEditTask"
+                    >add new task</button>
+                </div>
+            </div>
+
+            <!-- Header Information -->
+            <div class="headerInfo">
+                <div class="headerInfoProgress">
+                    <table>
+                        <tr id="header">
+                            <th>name of source</th>
+                            <th>progress</th>
+                        </tr>
+                        <tr>
+                            <td>liczba tasków</td>
+                            <td class="allTask"></td>
+                        </tr>
+                        <tr>
+                            <td>procent wykonania</td>
+                            <td class="progressTask"></td>
+                        </tr>
+                        <tr>
+                            <td>skuteczność</td>
+                            <td class="effectivenessTask"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="headerInfoTime">
+                    <div class="clockContainer">
+                        <span class="clockTime"></span>
+                        <span class="clockAmPm">PM</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- LIST of Task -->
+        <div class="todoList">
+            <div class="todoListInfo">
+                <h3>List of Task</h3>
+            </div>
+            <ul>
+                <!-- list of task -->
+            </ul>
+        </div>
+    </div>
+    <!-- SHOW -->
+    <div class="modalForm" id="modalFormShowTask">
+        <div class="modalFormHeader">
+            <div class="modalTitle">task message</div>
+            <button id="modalShowTaskCloseBtn" class="modalCloseButton button">&times;</button>
+        </div>
+        <div class="modalFormBody">
+            <p></p>
+        </div>
+    </div>
+    <!-- ADD -->
+    <div class="modalForm" id=modalFormAddTask>
+        <div class="modalFormHeader">
+            <div class="modalTitle">add new task</div>
+            <button id="modalCloseAddTaskBtn" class="modalCloseButton button">&times;</button>
+        </div>
+        <div class="modalFormBody">
+            <div class="modalInput">
+                <label for="modalAddTaskInputTitle">Title</label>
+                <input id="modalAddTaskInputTitle" type="text" class="todoInput">
+                <div class="modalIcon inconTitle"> 
+                    <i class="fas fa-exclamation-triangle modalIcon inconTitle"></i>
+                </div>
+            </div>
+            <div class="modalInput">
+                <label for="modalAddTasknputMsg">Message</label>
+                <input id="modalAddTaskInputMsg" type="text" class="todoInput">
+                <div class="modalIcon inconMsg hide">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>    
+            </div>
+            <!-- TIME -->
+            <div class="modalInput">
+                <label>End time</label>
+                <div class="modalSetTime">
+                    <div class="modalTime ">
+                        <button class="clockHourInc">+</button>
+                        <p id="clockHour" class="">H:00</p>
+                        <button class="clockHourDec">-</button>
+                    </div>
+                    <div class="modalTime ">
+                        <button class="clockMinutesInc">+</button>
+                        <p id="clockMinutes" class="">M:00</p>
+                        <button class="clockMinutesDec">-</button>
+                    </div>    
+                </div>
+                
+            </div>
+        </div>
+        <div class="modalFooter">
+            <button id="modalAddTaskBtn"type="button" class="button addTaskBtn">add new task</button>
+        </div>
+    </div>
+    <div id="modalOverlay"></div>
+    
+    <!-- EDIT -->
+    <div class="modalForm" id=modalFormEditTask>
+        <div class="modalFormHeader">
+            <div class="modalTitle">edit task</div>
+            <button id="modalEditTaskCloseBtn"class="modalCloseButton button">&times;</button>
+        </div>
+        <div class="modalFormBody">
+            <div class="modalInput">
+                <label for="modalEditInputTitle">Title</label>
+                <input id="modalEditInputTitle" type="text" class="todoInput">
+                <div id="modalEditTaskIconTitle" class="modalIcon inconTitle hide"> 
+                    <i class="fas fa-exclamation-triangle modalIcon inconTitle"></i>
+                </div>
+            </div>
+            <div class="modalInput">
+                <label for="modaleditInputMsg">Message</label>
+                <input id="modalEditInputMsg" type="text" class="todoInput">
+                <div id="modalEditTaskIconMsg" class="modalIcon inconMsg hide">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>    
+            </div>
+            <!-- TIME -->
+            <div class="modalInput">
+                <label>End time</label>
+                <div class="modalSetTime">
+                    <div class="modalTime ">
+                        <button id="clockHourIncEdit" class="clockHourInc">+</button>
+                        <p id="clockHourEdit" class="">H:00</p>
+                        <button id="clockHourDecEdit" class="clockHourDec">-</button>
+                    </div>
+                    <div class="modalTime ">
+                        <button id="clockMinutesIncEdit" class="clockMinutesInc">+</button>
+                        <p id="clockMinutesEdit" class="">M:00</p>
+                        <button id="clockMinutesDecEdit"class="clockMinutesDec">-</button>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="modalFooter">
+            <button id="modalEditTaskBtn" type="button" class="button addTaskBtn">edit task</button>
+        </div>
+
+    </div>
+
+    <script type="module" src="public/scripts/script.js"></script>
+</body>
+</html>

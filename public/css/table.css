@@ -1,0 +1,35 @@
+table {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-collapse: collapse;
+    width: 450px;
+    height: 120px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+tr {
+    transition: transform .2s ease-in;
+    cursor: pointer;
+}
+tr:hover {
+    transform: scale(1.02);
+}
+
+th {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+th, 
+td {
+    padding: 7px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#header {
+    background-color: var(--dark-blue);
+}
